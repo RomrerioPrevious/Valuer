@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "valuer"
+version = "0.1.0"
+description = ""
+authors = ["RomrerioPrevious <ggJohn12345@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.1.1"
+textual = "^0.56.4"
+pandas = "^2.2.2"
+icecream = "^2.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
