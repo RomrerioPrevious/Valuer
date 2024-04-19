@@ -1,11 +1,15 @@
-from icecream import ic
+import os
+from app.models import Table
 from app.config import Config
-import pandas as pd
+from icecream import ic
 
 
 class MainFileHandler:
     def __init__(self):
         config = Config()
         path = config["entry-point"]["main-file"]
-        self.table = pd.read_excel(path)  # TODO create xml read
+        self.table = Table(path)
         self.fields = config["main-file-fields"]
+
+    def parse(self):
+        ...
