@@ -8,6 +8,6 @@ class MainHandlerTest(TestCase):
 
     def test_read(self):
         table = self.handler.table
-        column = table["Unnamed: 1"]
+        column = table[1]
         row = column[31]
         assert 'Итого по Главе 1. "Подготовка территории строительства"' == row

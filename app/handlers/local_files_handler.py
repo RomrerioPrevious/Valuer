@@ -8,5 +8,5 @@ class LocalFilesHandler:
         config = Config()
         path = config["entry-point"]["input"]
 
-    def find_local_estimate(self):
+    def find_local_estimate(self, path) -> dict:
         ...
