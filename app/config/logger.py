@@ -28,3 +28,18 @@ class Logger:
     def write_log(log: str):
         with open("logs.log", "a", encoding="UTF-8") as file:
             file.write(log + "\n")
+
+    @staticmethod
+    def clear():
+        with open("logs.log", "w", encoding="UTF-8") as file:
+            file.write("")
+
+    @staticmethod
+    def write_file_not_found(error: str | FileNotFoundError):
+        with open("file.log", "a", encoding="UTF-8") as file:
+            file.write(error + "\n")
+
+    @staticmethod
+    def clear_fnf():
+        with open("file.log", "w", encoding="UTF-8") as file:
+            file.write("")

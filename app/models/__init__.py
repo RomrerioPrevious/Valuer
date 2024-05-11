@@ -1,2 +1,2 @@
 from .estimate import Estimate
-from .table import Table
+from .table_fabric import TableFabric

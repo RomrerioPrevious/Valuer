@@ -1,0 +1,120 @@
+21:41:20 info | result: Result(name='Глава 1. Подготовка территории строительства',
+                               estimates=[Estimate(name='01-01-01', workload=586.58, cost=20.24),
+                                          Estimate(name='01-02-01', workload=1592.49, cost=160.51),
+                                          Estimate(name='01-03',
+                                                   workload=30244.680000000004,
+                                                   cost=1322.79),
+                                          Estimate(name='01-04', workload=6851.88, cost=1130.36),
+                                          Estimate(name='Смета №5', workload=0, cost=6.79),
+                                          Estimate(name='Смета. Договор № 583-СТУ/21, прил. 4',
+                                                   workload=0,
+                                                   cost=408)],
+                               global_workload=39275.630000000005,
+                               global_cost=3048.6899999999996)
+21:41:20 info | result: Result(name='Глава 2. Основные объекты строительства',
+                               estimates=[Estimate(name='02-01', workload=1592.49, cost=24555.37),
+                                          Estimate(name='02-02', workload=1054.94, cost=576.01)],
+                               global_workload=2647.4300000000003,
+                               global_cost=25131.379999999997)
+21:41:20 info | result: Result(name='Глава 4. Объекты энергетического хозяйства',
+                               estimates=[Estimate(name='04-01',
+                                                   workload=1001.6899999999999,
+                                                   cost=764.3)],
+                               global_workload=1001.6899999999999,
+                               global_cost=764.3)
+21:41:20 info | result: Result(name='Глава 5. Объекты транспортного хозяйства и связи',
+                               estimates=[Estimate(name='05-01',
+                                                   workload=517.0799999999999,
+                                                   cost=120.99)],
+                               global_workload=517.0799999999999,
+                               global_cost=120.99)
+21:41:21 info | result: Result(name='Глава 6. Наружные сети и сооружения водоснабжения, водоотведения, '
+                                    'теплоснабжения и газоснабжения',
+                               estimates=[Estimate(name='06-01', workload=666.06, cost=127.98)],
+                               global_workload=666.06,
+                               global_cost=127.98)
+21:41:21 info | result: Result(name='Глава 7. Благоустройство и озеленение территории',
+                               estimates=[Estimate(name='07-01-01', workload=2067.78, cost=451.79)],
+                               global_workload=2067.78,
+                               global_cost=451.79)
+21:41:21 info | result: Result(name='', estimates=[], global_workload=0.0, global_cost=0.0)
+21:41:21 info | result: Result(name='Глава 8. Временные здания и сооружения',
+                               estimates=[Estimate(name='ТСН-2001.10 Таб.1, п.13а',
+                                                   workload=0,
+                                                   cost=630.32)],
+                               global_workload=0.0,
+                               global_cost=630.32)
+21:41:21 info | result: Result(name='', estimates=[], global_workload=0.0, global_cost=0.0)
+21:41:21 info | result: Result(name='Глава 9. Прочие работы и затраты',
+                               estimates=[Estimate(name='09-01', workload=143.47, cost=27.09),
+                                          Estimate(name='09-02', workload=0.0, cost=1283.98),
+                                          Estimate(name='09-03-01', workload=22.87, cost=21.56),
+                                          Estimate(name='Расчет', workload=0, cost=11.11),
+                                          Estimate(name='Распоряжение правительства г. Москвы №310-РП '
+                                                        'от 02.07.19',
+                                                   workload=0,
+                                                   cost=731.18),
+                                          Estimate(name='Распоряжение Правительства г.Москвы №309-РП '
+                                                        'от 02.07.19',
+                                                   workload=0,
+                                                   cost=504.26),
+                                          Estimate(name='Смета', workload=0, cost=1948.26)],
+                               global_workload=166.34,
+                               global_cost=4527.44)
+21:41:21 info | result: Result(name='', estimates=[], global_workload=0.0, global_cost=0.0)
+21:41:21 info | result: Result(name='Глава 10. Содержание службы заказчика. Строительный контроль',
+                               estimates=[Estimate(name='Приказ Москомэкспертизы от 13.09.2019 № '
+                                                        'МКЭ-ОД/19-53',
+                                                   workload=0,
+                                                   cost=435.04),
+                                          Estimate(name='Приказ МКЭ №29 от 20.03.2014г. в редакции от '
+                                                        '29.08.2014 Приказ №80',
+                                                   workload=0,
+                                                   cost=671.7),
+                                          Estimate(name='Смета №4', workload=0, cost=142.31),
+                                          Estimate(name='Смета №5', workload=0, cost=533)],
+                               global_workload=0.0,
+                               global_cost=1782.05)
+21:41:21 info | result: Result(name='Глава 12. Публичный технологический и ценовой аудит, подготовка '
+                                    'обоснования инвестиций, осуществляемых в инвестиционный проект по '
+                                    'созданию объекта капитального строительства, в отношении которого '
+                                    'планируется заключение контракта, предметом которого является '
+                                    'одновременно выполнение работ по проектированию, строительству и '
+                                    'вводу в эксплуатацию объекта капитального строительства, '
+                                    'технологический и ценовой аудит такого обоснования инвестиций, '
+                                    'аудит проектной документации, проектные и изыскательские работы',
+                               estimates=[Estimate(name='ТСН-2001.12 п.12.1 Сметы №№ 9-36',
+                                                   workload=0,
+                                                   cost=3453.64),
+                                          Estimate(name='ТСН-2001.12 п.12.1 Сметы №№1-3',
+                                                   workload=0,
+                                                   cost=888.75),
+                                          Estimate(name='ТСН-2001.12 прил. 6, п.12.5',
+                                                   workload=0,
+                                                   cost=52.2),
+                                          Estimate(name='Договор_ГС-/2532 МГЭ-39357-1-1 от 17.12.2021',
+                                                   workload=0,
+                                                   cost=344.08),
+                                          Estimate(name='Договор_Г/807 от 30.03.2022 г.',
+                                                   workload=0,
+                                                   cost=108.5),
+                                          Estimate(name='ТСН-2001.12 прил. 6, п.12.3',
+                                                   workload=0,
+                                                   cost=91.52)],
+                               global_workload=0.0,
+                               global_cost=4938.69)
+21:41:21 info | result: Result(name='', estimates=[], global_workload=0.0, global_cost=0.0)
+21:41:21 info | result: Result(name='Непредвиденные затраты',
+                               estimates=[Estimate(name='ТСН-2001.12 п.3.2.25',
+                                                   workload=0,
+                                                   cost=830.47)],
+                               global_workload=0.0,
+                               global_cost=830.47)
+21:41:21 info | result: Result(name='', estimates=[], global_workload=0.0, global_cost=0.0)
+21:41:21 info | result: Result(name='Налоги и обязательные платежи',
+                               estimates=[Estimate(name='№ 303-ФЗ от 3.08.2018',
+                                                   workload=0,
+                                                   cost=8380.3)],
+                               global_workload=0.0,
+                               global_cost=8380.3)
+21:41:21 info | result: Result(name='', estimates=[], global_workload=0.0, global_cost=0.0)
