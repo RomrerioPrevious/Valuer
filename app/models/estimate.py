@@ -4,15 +4,13 @@ from dataclasses import dataclass
 @dataclass
 class Estimate:
     name: str
-    unit: str
-    workload: str
-    cost: int
+    workload: float
+    cost: float
 
     @staticmethod
     def create_empty():
         return Estimate(
             name="",
-            unit="",
-            workload="",
-            cost=0
+            workload=0.0,
+            cost=0.0
         )

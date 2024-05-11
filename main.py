@@ -11,4 +11,6 @@ def main() -> None:
 if __name__ == "__main__":
     ic.configureOutput(prefix=Logger.info,
                        outputFunction=Logger.write_log)
+    Logger.clear_fnf()
+    Logger.clear()
     main()

@@ -17,3 +17,12 @@ class Result:
             global_workload=0.0,
             global_cost=0.0
         )
+
+    @staticmethod
+    def create_with_name(name: str):
+        return Result(
+            name=name,
+            estimates=[],
+            global_workload=0.0,
+            global_cost=0.0
+        )
