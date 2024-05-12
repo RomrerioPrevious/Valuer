@@ -4,6 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Estimate:
     name: str
+    units: str
     workload: float
     cost: float
 
