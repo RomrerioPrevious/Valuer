@@ -1,11 +1,8 @@
 from unittest import TestCase
-
 from icecream import ic
-
 from app import Logger
 from app.handlers import MainFileHandler
 import pytest
-
 from app.models import Estimate
 
 

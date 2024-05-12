@@ -16,4 +16,4 @@ Session.vim
 
 ### Project ###
 __pycache__
-.log
+**.log

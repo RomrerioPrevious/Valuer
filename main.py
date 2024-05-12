@@ -1,6 +1,6 @@
 from icecream import ic
-from app import Logger, ValuerApp
-from app.handlers import MainFileHandler
+from app import Logger
+from valuer import ValuerApp
 
 
 def main() -> None:
