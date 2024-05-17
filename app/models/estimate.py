@@ -1,17 +1,17 @@
 from dataclasses import dataclass
+from .sub_estimate import SubEstimate
 
 
 @dataclass
 class Estimate:
     name: str
-    units: str
-    workload: float
     cost: float
+    sub_estimates: [SubEstimate]
 
     @staticmethod
     def create_empty():
         return Estimate(
             name="",
-            workload=0.0,
-            cost=0.0
+            cost="",
+            sub_estimates=[]
         )

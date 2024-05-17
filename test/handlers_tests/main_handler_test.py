@@ -4,6 +4,8 @@ from app import Logger
 from app.handlers import MainFileHandler
 import pytest
 from app.models import Estimate
+from app.models.result import Result
+from app.models.sub_estimate import SubEstimate
 
 
 class MainHandlerTest(TestCase):
@@ -23,11 +25,30 @@ class MainHandlerTest(TestCase):
         correct = Estimate(
             name="Смета. Договор № 583-СТУ/21, прил. 4",
             cost=408,
-            workload=0,
+            sub_estimates=[],
         )
         row = self.handler.read_row(30)
         estimate = self.handler.create_estimate(row)
         assert estimate.name == correct.name and estimate.cost == correct.cost
+
+    def test_save_result(self):
+        result = Result(name="test",
+                        global_cost=1000,
+                        estimates=[
+                            Estimate(
+                                name="1",
+                                cost=1000.0,
+                                sub_estimates=[
+                                    SubEstimate(
+                                        name="gg",
+                                        unit="m",
+                                        quantity=20.0,
+                                        cost_of_quantity=1000.0
+                                    )
+                                ]
+                            )
+                        ])
+        self.handler.save_result(result)
 
     def test_parse(self):
         self.handler.parse()
