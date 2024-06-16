@@ -9,13 +9,13 @@ import pandas as pd
 from icecream import ic
 
 
-class MainFileHandler:
+class FileHandler:
     def __init__(self):
         config = Config()
         path = config["entry-point"]["main-file"]
         self.config = config
         self.table = TableFabric.fabric(path)
-        self.fields = config["main-file-fields"]
+        self.fields = config["file"]
 
     def parse(self):
         row_index = int(self.fields["start-row"])
@@ -38,6 +38,12 @@ class MainFileHandler:
                 estimates.append(estimate)
             row_index += 1
 
+    def create_estimate(self, row: list) -> Estimate:
+        estimate = Estimate.create_empty()
+        estimate.name = row[int(self.fields["name"])]
+        estimate.cost = row[int(self.fields["cost"])]
+        return estimate
+
     def create_result(self, estimates: [Estimate], name: str) -> Result:
         result = Result.create_with_name(name)
         handler = LocalFilesHandler()
@@ -54,6 +60,12 @@ class MainFileHandler:
                 result.estimates.append(i)
         ic(result)
         return result
+
+    def is_result(self, row: list) -> bool:
+        for i in row:
+            if "Итого" in str(i):
+                return True
+        return False
 
     def save_result(self, result: Result, num: int) -> None:
         output = self.config["entry-point"]["output"]
@@ -74,25 +86,14 @@ class MainFileHandler:
                "Наименование конструктивных решений (элементов), комплексов (видов) работ": "",
                "Единица измерения": "", "Количество (объем работ)": "",
                "Стоимость всего, руб.": ""}}
+
     def find_name(self, row: list) -> str:
         for i in row:
             if i:
                 return i
-
-    def create_estimate(self, row: list) -> Estimate:
-        estimate = Estimate.create_empty()
-        estimate.name = row[int(self.fields["name"])]
-        estimate.cost = row[int(self.fields["cost"])]
-        return estimate
 
     def read_row(self, row_index: int) -> list:
         row = []
         for column in self.table.values():
             row.append(column[row_index])
         return row
-
-    def is_result(self, row: list) -> bool:
-        for i in row:
-            if "Итого" in str(i):
-                return True
-        return False

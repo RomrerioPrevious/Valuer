@@ -1,2 +1,3 @@
-from .main_file_handler import MainFileHandler
+from .file_handler import FileHandler
 from .local_files_handler import LocalFilesHandler
+from .ai_handler import AIHandler

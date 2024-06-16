@@ -11,7 +11,7 @@ class LocalFilesHandler:
     def __init__(self):
         self.config = Config()
         self.path = self.config["entry-point"]["input"]
-        self.local = self.config["local-files-fields"]
+        self.local = self.config["file"]["local-file"]
 
     def get_local_estimate_by_name(self, name: str) -> [SubEstimate]:
         estimates_files = self.find_estimates(name)

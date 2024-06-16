@@ -1,7 +1,7 @@
 from unittest import TestCase
 from icecream import ic
 from app import Logger
-from app.handlers import MainFileHandler
+from app.handlers import FileHandler
 import pytest
 from app.models import Estimate
 from app.models.result import Result
@@ -9,7 +9,7 @@ from app.models.sub_estimate import SubEstimate
 
 
 class MainHandlerTest(TestCase):
-    handler = MainFileHandler()
+    handler = FileHandler()
     ic.configureOutput(prefix=Logger.info,
                        outputFunction=Logger.write_log)
     Logger.clear_fnf()
@@ -48,7 +48,7 @@ class MainHandlerTest(TestCase):
                                 ]
                             )
                         ])
-        self.handler.save_result(result)
+        self.handler.save_result(result, 1)
 
     def test_parse(self):
         self.handler.parse()
