@@ -40,6 +40,6 @@ class Logger:
             file.write(error + "\n")
 
     @staticmethod
-    def clear_fnf():
+    def clear_file_not_found():
         with open("file.log", "w", encoding="UTF-8") as file:
             file.write("")

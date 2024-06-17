@@ -9,7 +9,7 @@ class AIHandler:
         self.config = Config()
         self.ai_config = self.config["ai"]
         self.clf = pipeline("question-answering")
-        self.contex = ""
+        self.contex = "name"
 
     def check(self, estimate: Estimate) -> Estimate:
         titels = [(i.name, i.unit, i.quantity, i.cost_of_quantity) for i in estimate.sub_estimates]
@@ -21,4 +21,4 @@ class AIHandler:
         return estimate
 
     def send_message(self, question: str) -> str:
-        return self.clf(question=question, contex=self.contex)
+        return self.clf(question, self.contex)

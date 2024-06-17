@@ -12,11 +12,11 @@ class MainHandlerTest(TestCase):
     handler = FileHandler()
     ic.configureOutput(prefix=Logger.info,
                        outputFunction=Logger.write_log)
-    Logger.clear_fnf()
+    Logger.clear_file_not_found()
     Logger.clear()
 
     def test_read(self):
-        table = self.handler.table
+        table = self.handler._table
         column = table[1]
         row = column[31]
         assert 'Итого по Главе 1. "Подготовка территории строительства"' == row
@@ -44,11 +44,17 @@ class MainHandlerTest(TestCase):
                                         unit="m",
                                         quantity=20.0,
                                         cost_of_quantity=1000.0
+                                    ),
+                                    SubEstimate(
+                                        name="ds",
+                                        unit="m",
+                                        quantity=20.0,
+                                        cost_of_quantity=1000.0
                                     )
                                 ]
                             )
                         ])
-        self.handler.save_result(result, 1)
+        self.handler.save_result(result)
 
     def test_parse(self):
         self.handler.parse()
