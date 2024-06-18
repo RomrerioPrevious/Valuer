@@ -3,7 +3,6 @@ from icecream import ic
 from os import path
 import xml.etree.ElementTree as ET
 import pandas as pd
-
 from app import Logger
 
 

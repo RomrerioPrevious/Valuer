@@ -14,7 +14,7 @@ class FileHandler:
         config = Config()
         path = config["entry-point"]["main-file"]
         self.config = config
-        self._table = TableFabric.fabric(path)
+        self.table = TableFabric.fabric(path)
         self.fields = config["file"]
         self.number = 1
 
@@ -22,7 +22,7 @@ class FileHandler:
         row_index = int(self.fields["start-row"])
         estimates = []
         name = ""
-        while row_index != len(self._table[0]):
+        while row_index != len(self.table[0]):
             row = self.read_row(row_index)
             if self._is_result(row):
                 result = self.create_result(estimates, name)
@@ -39,7 +39,7 @@ class FileHandler:
 
     def read_row(self, row_index: int) -> list:
         row = []
-        for column in self._table.values():
+        for column in self.table.values():
             row.append(column[row_index])
         return row
 
@@ -69,10 +69,12 @@ class FileHandler:
 
     def save_result(self, result: Result) -> None:
         output = self.config["entry-point"]["output"]
-        with pd.ExcelWriter(output, engine="openpyxl") as writer:
-            data = self.create_data(result)
-            frame = pd.DataFrame(data=data)
-            frame.to_excel(writer, sheet_name="Смета Контракта")
+        header = False
+        if self.number == 1:
+            header = True
+        data = self.create_data(result)
+        frame = pd.DataFrame(data=data)
+        frame.to_csv(output, mode="a", index=True, header=header)
 
     def create_data(self, result: Result) -> dict:
         data = {
@@ -80,6 +82,7 @@ class FileHandler:
             "Наименование конструктивных решений (элементов), комплексов (видов) работ": {},
             "Единица измерения": {},
             "Количество (объем работ)": {},
+            "Цена на единицу измерения, без НДС, руб.": {},
             "Стоимость всего, руб.": {}
         }
         self.add_name_in_data(data, result.name)
@@ -103,6 +106,7 @@ class FileHandler:
         data["Наименование конструктивных решений (элементов), комплексов (видов) работ"][number] = sub.name
         data["Единица измерения"][number] = sub.unit
         data["Количество (объем работ)"][number] = sub.quantity
+        data["Цена на единицу измерения, без НДС, руб."] = ""
         data["Стоимость всего, руб."][number] = sub.cost_of_quantity
 
     def add_name_in_data(self, data: dict, name: str):
@@ -116,13 +120,6 @@ class FileHandler:
             if "Итого" in str(i):
                 return True
         return False
-
-    @staticmethod
-    def _create_row(estimate: Estimate, num: float) -> dict:
-        result = {}
-        for i, sub_estimate in enumerate(estimate.sub_estimates):
-            ...
-        return result
 
     @staticmethod
     def _find_name(row: list) -> str:

@@ -1,6 +1,9 @@
 from unittest import TestCase
+
+import pandas as pd
 from icecream import ic
 from app import Logger
+from app.config import Config
 from app.handlers import FileHandler
 import pytest
 from app.models import Estimate
@@ -16,7 +19,7 @@ class MainHandlerTest(TestCase):
     Logger.clear()
 
     def test_read(self):
-        table = self.handler._table
+        table = self.handler.table
         column = table[1]
         row = column[31]
         assert 'Итого по Главе 1. "Подготовка территории строительства"' == row
@@ -54,6 +57,7 @@ class MainHandlerTest(TestCase):
                                 ]
                             )
                         ])
+        self.handler.save_result(result)
         self.handler.save_result(result)
 
     def test_parse(self):
