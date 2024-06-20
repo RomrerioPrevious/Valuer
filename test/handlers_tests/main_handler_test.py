@@ -46,14 +46,9 @@ class MainHandlerTest(TestCase):
                                         name="gg",
                                         unit="m",
                                         quantity=20.0,
-                                        cost_of_quantity=1000.0
+                                        cost_of_quantity=1000.0,
+                                        cost=20000.0
                                     ),
-                                    SubEstimate(
-                                        name="ds",
-                                        unit="m",
-                                        quantity=20.0,
-                                        cost_of_quantity=1000.0
-                                    )
                                 ]
                             )
                         ])

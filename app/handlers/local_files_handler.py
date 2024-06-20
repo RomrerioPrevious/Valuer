@@ -52,13 +52,23 @@ class LocalFilesHandler:
         for i in range(start, len(table[0])):
             try:
                 row = self.read_row(table, i)
+                cost_index = int(local["cost"])
+                cost_of_quantity_index = int(local["cost_of_quantity"])
+                if str(row[cost_index]) == "nan":
+                    next_row = self.read_row(table, i + 1)
+                    cost = next_row[cost_index]
+                    cost_of_quantity = next_row[cost_of_quantity_index]
+                else:
+                    cost = row[cost_index]
+                    cost_of_quantity = row[cost_of_quantity_index]
                 sub_estimate = SubEstimate(
                     name=row[int(local["name"])],
                     unit=row[int(local["unit"])],
                     quantity=row[int(local["quantity"])],
-                    cost_of_quantity=row[int(local["cost_of_quantity"])]
+                    cost_of_quantity=cost_of_quantity,
+                    cost=cost
                 )
-                if str(sub_estimate.unit) == "nan":
+                if not sub_estimate.is_full_estimate():
                     continue
                 estimates.append(sub_estimate)
             except BaseException as err:

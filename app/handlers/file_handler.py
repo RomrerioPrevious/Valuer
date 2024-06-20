@@ -2,7 +2,6 @@ from .local_files_handler import LocalFilesHandler
 from app.models import TableFabric, Estimate
 from app.config import Config, Logger
 from app.models.result import Result
-from openpyxl import load_workbook
 import pandas as pd
 from icecream import ic
 
@@ -19,23 +18,30 @@ class FileHandler:
         self.number = 1
 
     def parse(self):
-        row_index = int(self.fields["start-row"])
+        end_row = self.get_end_row()
         estimates = []
         name = ""
-        while row_index != len(self.table[0]):
+        for row_index in range(int(self.fields["start-row"]), end_row):
             row = self.read_row(row_index)
-            if self._is_result(row):
+            if self.is_result(row):
                 result = self.create_result(estimates, name)
                 self.save_result(result)
                 estimates = []
                 name = ""
                 self.number += 1
             elif not name:
-                name = self._find_name(row)
+                name = self.find_name(row)
             else:
                 estimate = self.create_estimate(row)
                 estimates.append(estimate)
-            row_index += 1
+
+    def get_end_row(self):
+        end_row = self.fields["end-row"]
+        if not end_row:
+            end_row = len(self.table[0])
+        else:
+            end_row = int(end_row)
+        return end_row
 
     def read_row(self, row_index: int) -> list:
         row = []
@@ -106,8 +112,8 @@ class FileHandler:
         data["Наименование конструктивных решений (элементов), комплексов (видов) работ"][number] = sub.name
         data["Единица измерения"][number] = sub.unit
         data["Количество (объем работ)"][number] = sub.quantity
-        data["Цена на единицу измерения, без НДС, руб."] = ""
-        data["Стоимость всего, руб."][number] = sub.cost_of_quantity
+        data["Цена на единицу измерения, без НДС, руб."][number] = sub.cost_of_quantity
+        data["Стоимость всего, руб."][number] = sub.cost
 
     def add_name_in_data(self, data: dict, name: str):
         for i in data.keys():
@@ -115,14 +121,14 @@ class FileHandler:
         data["Наименование конструктивных решений (элементов), комплексов (видов) работ"][self.number] = name
 
     @staticmethod
-    def _is_result(row: list) -> bool:
+    def is_result(row: list) -> bool:
         for i in row:
             if "Итого" in str(i):
                 return True
         return False
 
     @staticmethod
-    def _find_name(row: list) -> str:
+    def find_name(row: list) -> str:
         for i in row:
             if i:
                 return i
