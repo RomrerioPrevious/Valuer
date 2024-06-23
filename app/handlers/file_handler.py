@@ -1,11 +1,8 @@
 from .local_files_handler import LocalFilesHandler
-from app.models import TableFabric, Estimate
+from app.models import TableFabric, Estimate, Result, SubEstimate
 from app.config import Config, Logger
-from app.models.result import Result
 import pandas as pd
 from icecream import ic
-
-from ..models.sub_estimate import SubEstimate
 
 
 class FileHandler:

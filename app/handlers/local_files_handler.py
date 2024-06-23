@@ -1,10 +1,9 @@
-from icecream import ic
-from app import Logger
+from app.models import TableFabric, Estimate, SubEstimate
+from app.errors import DataNotFoundError
 from app.config import Config
-from app.models import TableFabric, Estimate
+from app import Logger
+from icecream import ic
 import os
-
-from app.models.sub_estimate import SubEstimate
 
 
 class LocalFilesHandler:
@@ -24,7 +23,7 @@ class LocalFilesHandler:
                     continue
                 for i in sub:
                     sub_estimates.append(i)
-            except FileNotFoundError:
+            except (FileNotFoundError, DataNotFoundError):
                 Logger.write_file_not_found(file_name)
         return sub_estimates
 
@@ -47,7 +46,7 @@ class LocalFilesHandler:
             sub_estimates = self.parse_file_with_variations(table, variation)
             if sub_estimates:
                 return sub_estimates
-        raise ValueError(f"Couldn't analyze the estimate.")  # TODO normal errors
+        raise DataNotFoundError(f"Couldn't analyze the estimate.")
 
     def parse_file_with_variations(self, table: dict, variation: int) -> [SubEstimate]:
         local = self.config_of_local[variation]
