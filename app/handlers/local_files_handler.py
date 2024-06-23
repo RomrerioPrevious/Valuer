@@ -15,11 +15,15 @@ class LocalFilesHandler:
 
     def parse_local_estimate(self, name: str) -> [SubEstimate]:
         estimates_files = self.find_files(name)
-        sub_estimates = None
+        sub_estimates = []
         for file_name in estimates_files:
             try:
                 temp_table = TableFabric.fabric(self.path + file_name)
-                sub_estimates = self.parse_file(temp_table)
+                sub = self.parse_file(temp_table)
+                if not sub:
+                    continue
+                for i in sub:
+                    sub_estimates.append(i)
             except FileNotFoundError:
                 Logger.write_file_not_found(file_name)
         return sub_estimates
