@@ -13,6 +13,10 @@ FileTree {
 }
 
 Table {
-    height: 75%;
+    height: 65%;
+}
+
+Input {
+    width: 100%;
 }
 

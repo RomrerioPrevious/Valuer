@@ -25,3 +25,17 @@ class TableFabric:
             new_table[i] = column
             del column
         return new_table
+
+    @staticmethod
+    def fabric_without_rename(path: str) -> dict:
+        extension = os.path.splitext(path)[1]
+        match extension:
+            case ".xml":
+                table = pd.read_xml(path).to_dict()
+            case ".xlsx" | ".ods" | ".xls":
+                table = pd.read_excel(path).to_dict()
+            case ".csv":
+                table = pd.read_csv(path).to_dict()
+            case _:
+                raise PermissionError(f"Incorrect extension {extension}")
+        return table
