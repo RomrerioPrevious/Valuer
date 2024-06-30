@@ -1,9 +1,8 @@
 from configparser import ConfigParser
 import ast
-from icecream import ic
 
 
-class Config(ConfigParser):
+class Config:
     def __new__(cls):
         if not hasattr(cls, 'instance'):
             parser = ConfigParser()
