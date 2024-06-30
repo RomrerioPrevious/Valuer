@@ -1,6 +1,4 @@
-from textual.app import ComposeResult
-from textual.widgets import Static, DataTable
-from icecream import ic
+from textual.widgets import DataTable
 
 
 class Table(DataTable):

@@ -1,9 +1,6 @@
 from pathlib import Path
 from typing import Iterable
-from textual.app import ComposeResult
-from textual.widgets import Static, DirectoryTree, Tree
-from icecream import ic
-from textual.widgets._directory_tree import DirEntry
+from textual.widgets import DirectoryTree
 
 
 class FileTree(DirectoryTree):

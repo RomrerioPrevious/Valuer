@@ -1,6 +1,5 @@
 from unittest import TestCase
-from app.config import Config
-import pytest
+from valuer.app import Config
 
 
 class ConfigTest(TestCase):

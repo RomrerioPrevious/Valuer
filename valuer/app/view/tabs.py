@@ -1,6 +1,5 @@
-from icecream import ic
 from textual.app import ComposeResult
-from textual.widgets import Input, TabbedContent, TabPane, Static
+from textual.widgets import Input, TabPane
 from textual.containers import *
 from app import Config
 from app.view.input_block import InputBlock

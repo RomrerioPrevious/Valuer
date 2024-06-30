@@ -1,14 +1,11 @@
 from unittest import TestCase
 
-import pandas as pd
 from icecream import ic
-from app import Logger
-from app.config import Config
-from app.handlers import FileHandler
-import pytest
-from app.models import Estimate
-from app.models.result import Result
-from app.models.sub_estimate import SubEstimate
+from valuer.app import Logger
+from valuer.app import FileHandler
+from valuer.app import Estimate
+from valuer.app import Result
+from valuer.app.models.sub_estimate import SubEstimate
 
 
 class MainHandlerTest(TestCase):

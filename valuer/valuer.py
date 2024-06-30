@@ -1,15 +1,12 @@
 from textual.app import App, ComposeResult
 from textual.containers import *
-from textual.widgets import Header, Footer, Input, DirectoryTree, Button, TabbedContent, TabPane
+from textual.widgets import Header, Footer, Input, DirectoryTree, TabbedContent
 from tkinter import filedialog
-from app import Logger, Config, FileHandler
-from app.models import TableFabric
-from app.view import *
+from app import *
 from icecream import ic
-from app.view.input_block import InputBlock
+from app import InputBlock
 from configparser import ConfigParser
-
-from app.view.tabs import Tabs
+from app import Tabs
 
 
 class ValuerApp(App):
@@ -69,7 +66,7 @@ class ValuerApp(App):
             tabs.add_pane(Tabs.Plus("+"))
         config = Config()
         configparser.read_dict(config)
-        with open("D:/Save/Valuer/config.ini", "w", encoding="UTF-8") as file:
+        with open(Config.find_config_path(), "w", encoding="UTF-8") as file:
             configparser.write(file)
 
     def get_from_main_block(self):

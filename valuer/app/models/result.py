@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from app.models import Estimate
+from .estimate import Estimate
 
 
 @dataclass

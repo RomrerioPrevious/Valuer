@@ -2,7 +2,6 @@ from .local_files_handler import LocalFilesHandler
 from app.models import TableFabric, Estimate, Result, SubEstimate
 from app.config import Config, Logger
 import pandas as pd
-from icecream import ic
 
 
 class FileHandler:
@@ -67,7 +66,6 @@ class FileHandler:
             finally:
                 result.global_cost += i.cost
                 result.estimates.append(i)
-        ic(result)
         return result
 
     def save_result(self, result: Result) -> None:

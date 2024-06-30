@@ -1,7 +1,5 @@
 from unittest import TestCase
-from icecream import ic
-from app import Logger
-from app.handlers import AIHandler
+from valuer.app import AIHandler
 
 
 class AiTest(TestCase):
