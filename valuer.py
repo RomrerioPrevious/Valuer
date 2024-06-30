@@ -49,22 +49,24 @@ class ValuerApp(App):
         handler.parse()
 
     def action_save(self):
+        ic()
         configparser = ConfigParser()
         tab = self.query_one("#tabs", TabbedContent).active_pane
         type_of_tab = type(tab)
         if type_of_tab is InputBlock:
             id = int(tab.id[4:])
             self.get_from_input_block(id)
-        elif type_of_tab is TabPane:
-            if tab.id == "main":
-                self.get_from_main_block()
-            else:
-                id = int(tab.id[4:])
-                self.get_from_add_block(id)
-                tabs = self.query_one("#tabs", TabbedContent)
-                tabs.clear_panes()
-                with tabs:
-                    yield from Tabs().compose()
+        elif type_of_tab is Tabs.CCP:
+            self.get_from_main_block()
+        else:
+            id = int(tab.id[4:])
+            self.get_from_add_block(id)
+            tabs = self.query_one("#tabs", TabbedContent)
+            tabs.clear_panes()
+            tabs.add_pane(Tabs.CCP("СРР"))
+            for i, config in enumerate(Config()["file"]["local-file"]):
+                tabs.add_pane(InputBlock(i + 1, config))
+            tabs.add_pane(Tabs.Plus("+"))
         config = Config()
         configparser.read_dict(config)
         with open("D:/Save/Valuer/config.ini", "w", encoding="UTF-8") as file:
