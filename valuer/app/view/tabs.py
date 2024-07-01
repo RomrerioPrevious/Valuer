@@ -1,8 +1,8 @@
 from textual.app import ComposeResult
 from textual.widgets import Input, TabPane
 from textual.containers import *
-from app import Config
-from app.view.input_block import InputBlock
+from valuer.app import Config
+from valuer.app.view.input_block import InputBlock
 
 
 class Tabs:
@@ -12,6 +12,25 @@ class Tabs:
         for i, config in enumerate(Config()["file"]["local-file"]):
             yield InputBlock(i + 1, config)
         yield Tabs.Plus("+")
+
+    class CCP(TabPane):
+        def compose(self) -> ComposeResult:
+            config = Config()
+            with Horizontal():
+                with Container():
+                    yield Input(id="name",
+                                placeholder="name", value=config["file"]["name"])
+                    yield Input(id="start-row",
+                                placeholder="start row", value=config["file"]["start-row"])
+                    yield Input(id="file",
+                                placeholder="file path", value=config["entry-point"]["main-file"])
+                with Container():
+                    yield Input(id="cost",
+                                placeholder="cost", value=config["file"]["cost"])
+                    yield Input(id="end-row",
+                                placeholder="end row", value=config["file"]["end-row"])
+                    yield Input(id="output",
+                                placeholder="output file", value=config["entry-point"]["output"])
 
     class Plus(TabPane):
         def compose(self) -> ComposeResult:
@@ -30,15 +49,3 @@ class Tabs:
                                 placeholder="cost of quantity")
                     yield Input(id=f"cost-var",
                                 placeholder="cost")
-
-    class CCP(TabPane):
-        def compose(self) -> ComposeResult:
-            with Horizontal():
-                with Container():
-                    yield Input(id="name", placeholder="name")
-                    yield Input(id="start-row", placeholder="start row")
-                    yield Input(id="file", placeholder="file path")
-                with Container():
-                    yield Input(id="cost", placeholder="cost")
-                    yield Input(id="end-row", placeholder="end row")
-                    yield Input(id="output", placeholder="output file")

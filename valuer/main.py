@@ -1,5 +1,5 @@
 from icecream import ic, install
-from app import Logger
+from valuer.app import Logger
 from valuer import ValuerApp
 
 

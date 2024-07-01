@@ -1,5 +1,4 @@
 from unittest import TestCase
-
 from icecream import ic
 from valuer.app import Logger
 from valuer.app import FileHandler

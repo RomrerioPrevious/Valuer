@@ -1,7 +1,7 @@
-from app.models import TableFabric, SubEstimate
-from app.errors import DataNotFoundError
-from app.config import Config
-from app import Logger
+from valuer.app.models import TableFabric, SubEstimate
+from valuer.app.errors import DataNotFoundError
+from valuer.app.config import Config
+from valuer.app import Logger
 import os
 
 
@@ -55,7 +55,7 @@ class LocalFilesHandler:
             try:
                 row = self.read_row(table, i)
                 cost_index = int(local["cost"])
-                cost_of_quantity_index = int(local["cost_of_quantity"])
+                cost_of_quantity_index = int(local["cost-of-quantity"])
                 if str(row[cost_index]) == "nan":
                     next_row = self.read_row(table, i + 1)
                     cost = next_row[cost_index]

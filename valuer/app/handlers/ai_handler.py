@@ -1,7 +1,7 @@
-from app.config import Config
+from valuer.app.config import Config
 from transformers import pipeline
-from app.models import Estimate
-from app.models.sub_estimate import SubEstimate
+from valuer.app.models import Estimate
+from valuer.app.models.sub_estimate import SubEstimate
 
 
 class AIHandler:

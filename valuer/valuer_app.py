@@ -2,11 +2,9 @@ from textual.app import App, ComposeResult
 from textual.containers import *
 from textual.widgets import Header, Footer, Input, DirectoryTree, TabbedContent
 from tkinter import filedialog
-from app import *
+from valuer.app import *
 from icecream import ic
-from app import InputBlock
 from configparser import ConfigParser
-from app import Tabs
 
 
 class ValuerApp(App):
@@ -19,7 +17,7 @@ class ValuerApp(App):
     def compose(self) -> ComposeResult:
         yield Header(name="Valuer")
         with Container():
-            yield FileTree(id="file-tree-view", path="D://test//Сметы")
+            yield FileTree(id="file-tree-view", path="C:\\")
             with Vertical(id="work-zone"):
                 yield Table(id="table-view", show_header=False)
                 with TabbedContent(id="tabs"):
@@ -43,11 +41,12 @@ class ValuerApp(App):
 
     def action_start(self):
         handler = FileHandler()
+        path = str(self.query_one("#file-tree-view", FileTree).path) + "\\"
+        Config()["entry-point"]["input"] = path
+        self.update_config()
         handler.parse()
 
     def action_save(self):
-        ic()
-        configparser = ConfigParser()
         tab = self.query_one("#tabs", TabbedContent).active_pane
         type_of_tab = type(tab)
         if type_of_tab is InputBlock:
@@ -64,6 +63,11 @@ class ValuerApp(App):
             for i, config in enumerate(Config()["file"]["local-file"]):
                 tabs.add_pane(InputBlock(i + 1, config))
             tabs.add_pane(Tabs.Plus("+"))
+        self.update_config()
+
+    @staticmethod
+    def update_config():
+        configparser = ConfigParser()
         config = Config()
         configparser.read_dict(config)
         with open(Config.find_config_path(), "w", encoding="UTF-8") as file:

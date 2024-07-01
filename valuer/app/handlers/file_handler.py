@@ -1,6 +1,6 @@
 from .local_files_handler import LocalFilesHandler
-from app.models import TableFabric, Estimate, Result, SubEstimate
-from app.config import Config, Logger
+from valuer.app.models import TableFabric, Estimate, Result, SubEstimate
+from valuer.app.config import Config, Logger
 import pandas as pd
 
 
