@@ -17,3 +17,5 @@ Session.vim
 ### Project ###
 __pycache__
 **.log
+dist
+build
