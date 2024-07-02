@@ -12,5 +12,5 @@ def install():
         "--onefile",
         "--windowed",
         "-n valuer",
-        "--icon=valuer.ico"
+        "--icon=valuer/resources/style/valuer.ico"
     ])
