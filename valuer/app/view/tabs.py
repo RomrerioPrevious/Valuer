@@ -1,5 +1,5 @@
 from textual.app import ComposeResult
-from textual.widgets import Input, TabPane
+from textual.widgets import Input, TabPane, LoadingIndicator
 from textual.containers import *
 from valuer.app import Config
 from valuer.app.view.input_block import InputBlock
@@ -49,3 +49,8 @@ class Tabs:
                                 placeholder="cost of quantity")
                     yield Input(id=f"cost-var",
                                 placeholder="cost")
+
+    class Loading(TabPane):
+        def compose(self) -> ComposeResult:
+            with Center():
+                yield LoadingIndicator()

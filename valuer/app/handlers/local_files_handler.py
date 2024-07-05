@@ -1,3 +1,4 @@
+from .ai_handler import AIHandler
 from valuer.app.models import TableFabric, SubEstimate
 from valuer.app.errors import DataNotFoundError
 from valuer.app.config import Config
@@ -24,7 +25,7 @@ class LocalFilesHandler:
                     sub_estimates.append(i)
             except (FileNotFoundError, DataNotFoundError):
                 Logger.write_file_not_found(file_name)
-        return sub_estimates
+        return AIHandler().parse(sub_estimates)
 
     def find_files(self, name: str) -> [str]:
         result = []

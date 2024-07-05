@@ -1,3 +1,5 @@
+from time import sleep
+
 from textual.app import App, ComposeResult
 from textual.containers import *
 from textual.widgets import Header, Footer, Input, DirectoryTree, TabbedContent
@@ -57,13 +59,16 @@ class ValuerApp(App):
         else:
             id = int(tab.id[4:])
             self.get_from_add_block(id)
-            tabs = self.query_one("#tabs", TabbedContent)
-            tabs.clear_panes()
-            tabs.add_pane(Tabs.CCP("СРР"))
-            for i, config in enumerate(Config()["file"]["local-file"]):
-                tabs.add_pane(InputBlock(i + 1, config))
-            tabs.add_pane(Tabs.Plus("+"))
+            self.create_tabbed_content()
         self.update_config()
+
+    def create_tabbed_content(self):
+        tabs = self.query_one("#tabs", TabbedContent)
+        tabs.clear_panes()
+        tabs.add_pane(Tabs.CCP("СРР"))
+        for i, config in enumerate(Config()["file"]["local-file"]):
+            tabs.add_pane(InputBlock(i + 1, config))
+        tabs.add_pane(Tabs.Plus("+"))
 
     @staticmethod
     def update_config():

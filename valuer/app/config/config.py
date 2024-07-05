@@ -22,3 +22,9 @@ class Config:
         dir_path = dir_path.removesuffix("app\\config")
         dir_path += "resources\\config.ini"
         return dir_path
+
+    @staticmethod
+    def find_global_path():
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        dir_path = dir_path.removesuffix("app\\config")
+        return dir_path

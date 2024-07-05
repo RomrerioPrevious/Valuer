@@ -1,7 +1,6 @@
 from icecream import ic, install
 from valuer.app import Logger
-from valuer import ValuerApp
-
+from .valuer_app import ValuerApp
 
 def main() -> None:
     app = ValuerApp()

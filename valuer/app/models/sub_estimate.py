@@ -29,6 +29,19 @@ class SubEstimate:
             cost=tuple_[4]
         )
 
+    @staticmethod
+    def create_by_dict(dict_: dict):
+        return SubEstimate(
+            name=dict_["name"],
+            unit=dict_["unit"],
+            quantity=dict_["quantity"],
+            cost_of_quantity=dict_["cost_of_quantity"],
+            cost=dict_["cost"]
+        )
+
     def is_full_estimate(self):
         return str(self.cost_of_quantity) != "nan" and str(self.unit) != "nan" and \
                str(self.cost) != "nan"
+
+    def __str__(self):
+        return "{" + f"'name': {self.name}, 'cost': {self.cost}, 'unit': {self.unit}, 'quantity': {self.quantity}" + "}"

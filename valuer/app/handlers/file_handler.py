@@ -88,7 +88,10 @@ class FileHandler:
         }
         self.add_name_in_data(data, result.name)
         for i, estimate in enumerate(result.estimates):
-            self.add_estimate_in_data(data, estimate, i)
+            try:
+                self.add_estimate_in_data(data, estimate, i)
+            except BaseException as ex:
+                Logger.write_error(ex)
         return data
 
     def add_estimate_in_data(self, data: dict, estimate: Estimate, num: int):
