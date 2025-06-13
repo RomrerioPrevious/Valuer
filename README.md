@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/logo.png" alt="Valuer" width="100" height="100"/>
+<img src="https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/logo.png" alt="Valuer" width="200" height="200"/>
 
 </p>
 
