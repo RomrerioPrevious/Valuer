@@ -1,4 +1,4 @@
-![Valuer]([http://url/to/img.png](https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/logo.png))
+![Valuer](https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/logo.png)
 
 <p align="center">
 
@@ -11,7 +11,7 @@ This is __AI__ parser for buisnes estimates.
 
 ---
 
-![Valuer]([http://url/to/img.png](https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/screen.png))
+![Valuer](https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/screen.png)
 
 ## 🔧 How to install
 
