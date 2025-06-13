@@ -8,11 +8,11 @@ class TableFabric:
         extension = os.path.splitext(path)[1]
         match extension:
             case ".xml":
-                table = pd.read_xml(path).to_dict()
+                table = pd.read_xml(path, encoding="UTF-8").to_dict()
             case ".xlsx" | ".ods" | ".xls":
-                table = pd.read_excel(path).to_dict()
+                table = pd.read_excel(path, engine="openpyxl").to_dict()
             case ".csv":
-                table = pd.read_csv(path).to_dict()
+                table = pd.read_csv(path, encoding="UTF-8").to_dict()
             case _:
                 raise PermissionError(f"Incorrect extension {extension}")
         table = TableFabric.rename_tabel_columns(table)

@@ -2,6 +2,7 @@ from icecream import ic, install
 from valuer.app import Logger
 from .valuer_app import ValuerApp
 
+
 def main() -> None:
     app = ValuerApp()
     app.run()

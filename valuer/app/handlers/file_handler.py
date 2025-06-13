@@ -29,6 +29,8 @@ class FileHandler:
                 name = self.find_name(row)
             else:
                 estimate = self.create_estimate(row)
+                if not estimate:
+                    continue
                 estimates.append(estimate)
 
     def get_end_row(self):
@@ -45,11 +47,13 @@ class FileHandler:
             row.append(column[row_index])
         return row
 
-    def create_estimate(self, row: list) -> Estimate:
-        estimate = Estimate.create_empty()
-        estimate.name = row[int(self.fields["name"])]
-        estimate.cost = row[int(self.fields["cost"])]
-        return estimate
+    def create_estimate(self, row: list) -> Estimate | None:
+        if row[int(self.fields["name"])] != "nan" and row[int(self.fields["cost"])] != "nan":
+            estimate = Estimate.create_empty()
+            estimate.name = row[int(self.fields["name"])]
+            estimate.cost = row[int(self.fields["cost"])]
+            return estimate
+        return None
 
     @staticmethod
     def create_result(estimates: [Estimate], name: str) -> Result:
