@@ -1,7 +1,10 @@
-![Valuer](https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/logo.png)
 
 <p align="center">
+<img src="https://github.com/RomrerioPrevious/Valuer/blob/main/screenshots/logo.png" alt="Valuer" width="100" height="100"/>
 
+</p>
+
+<p align="center">
 <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/>
 
 </p>
